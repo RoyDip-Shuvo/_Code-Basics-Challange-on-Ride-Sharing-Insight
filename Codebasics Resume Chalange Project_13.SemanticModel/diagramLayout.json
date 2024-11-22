@@ -7,7 +7,112 @@
         "x": 0,
         "y": 0
       },
-      "nodes": [],
+      "nodes": [
+        {
+          "location": {
+            "x": 294.25606763763437,
+            "y": 288.24382617763575
+          },
+          "nodeIndex": "City_Target_passenger_rating",
+          "nodeLineageTag": "91a8c468-778f-4f5e-810e-846b4ef123e3",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 10,
+            "y": 300.14470090836568
+          },
+          "nodeIndex": "dim_city",
+          "nodeLineageTag": "fef1630a-cb66-41c9-b86f-f0c3c20f71f3",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 881.39039036836675,
+            "y": 286.22375038504958
+          },
+          "nodeIndex": "dim_date",
+          "nodeLineageTag": "169a83bb-9abd-4eda-951c-972633fc3ec5",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 448.38750087986438,
+            "y": -10
+          },
+          "nodeIndex": "dim_repeat_trip_distribution",
+          "nodeLineageTag": "5ff79b54-73d5-4a63-90ab-a8cc9c7ec164",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 607.390390368367,
+            "y": 216.21044247047229
+          },
+          "nodeIndex": "Fact_passenger_summary",
+          "nodeLineageTag": "24cd7d38-e0f8-4baf-81a0-9e6ebffd37cd",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 475.4568970083356,
+            "y": 466.44750077009917
+          },
+          "nodeIndex": "Fact_trips",
+          "nodeLineageTag": "017663c6-d551-4bf9-8a56-0087d1c2c599",
+          "size": {
+            "height": 272,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 164.12724210950705,
+            "y": 35.330994512954931
+          },
+          "nodeIndex": "Monthly_target_new_passengers",
+          "nodeLineageTag": "d440f6d0-fc1e-4d92-afb3-d6a259cd727a",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 191.2062776800305,
+            "y": 547.79784240579329
+          },
+          "nodeIndex": "Monthly_target_trips",
+          "nodeLineageTag": "ceedb4f6-9a09-41cf-a517-67df5e5cccb5",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
       "name": "All tables",
       "zoomValue": 100,
       "pinKeyFieldsToTop": false,

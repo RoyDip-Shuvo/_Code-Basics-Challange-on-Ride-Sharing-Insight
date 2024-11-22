@@ -13,6 +13,10 @@
       {
         "name": "PBI_ProTooling",
         "value": "[\"DevMode\"]"
+      },
+      {
+        "name": "PBI_QueryOrder",
+        "value": "[\"City_Target_passenger_rating\",\"dim_city\",\"dim_date\",\"dim_repeat_trip_distribution\",\"Fact_passenger_summary\",\"Fact_trips\",\"Monthly_target_new_passengers\",\"Monthly_target_trips\"]"
       }
     ],
     "culture": "en-US",
@@ -26,6 +30,801 @@
           },
           "contentType": "json"
         }
+      }
+    ],
+    "dataAccessOptions": {
+      "legacyRedirects": true,
+      "returnErrorValuesAsNull": true
+    },
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "relationships": [
+      {
+        "name": "AutoDetected_52be6676-fe9e-439e-9d45-42bb6e2ba245",
+        "crossFilteringBehavior": "bothDirections",
+        "fromCardinality": "one",
+        "fromColumn": "city_id",
+        "fromTable": "dim_city",
+        "toColumn": "city_id",
+        "toTable": "City_Target_passenger_rating"
+      },
+      {
+        "name": "AutoDetected_f4104a16-443c-4221-b839-11858fdd6772",
+        "fromColumn": "city_id",
+        "fromTable": "dim_repeat_trip_distribution",
+        "toColumn": "city_id",
+        "toTable": "City_Target_passenger_rating"
+      },
+      {
+        "name": "AutoDetected_cd369233-801f-4b64-8d96-1ad5b43ef5a9",
+        "fromColumn": "city_id",
+        "fromTable": "Fact_passenger_summary",
+        "toColumn": "city_id",
+        "toTable": "City_Target_passenger_rating"
+      },
+      {
+        "name": "AutoDetected_a804b12d-93e7-4e08-b975-eb17c3c54273",
+        "fromColumn": "city_id",
+        "fromTable": "Fact_trips",
+        "toColumn": "city_id",
+        "toTable": "City_Target_passenger_rating"
+      },
+      {
+        "name": "AutoDetected_448efd99-7316-4bc6-987f-62485ea0a933",
+        "fromColumn": "city_id",
+        "fromTable": "Monthly_target_new_passengers",
+        "toColumn": "city_id",
+        "toTable": "City_Target_passenger_rating"
+      },
+      {
+        "name": "AutoDetected_242c93e0-dd04-444e-a964-5f4f109f1d94",
+        "fromColumn": "city_id",
+        "fromTable": "Monthly_target_trips",
+        "toColumn": "city_id",
+        "toTable": "City_Target_passenger_rating"
+      }
+    ],
+    "sourceQueryCulture": "en-US",
+    "tables": [
+      {
+        "name": "City_Target_passenger_rating",
+        "annotations": [
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          },
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "city_id",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "72bff4ef-90d5-4d31-b23c-7f9d5d4e1929",
+            "sourceColumn": "city_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "target_avg_passenger_rating",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "2803d0a5-ba04-4c99-a11b-3dc578de66b2",
+            "sourceColumn": "target_avg_passenger_rating",
+            "summarizeBy": "sum"
+          }
+        ],
+        "lineageTag": "91a8c468-778f-4f5e-810e-846b4ef123e3",
+        "partitions": [
+          {
+            "name": "City_Target_passenger_rating",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Folder.Files(\"H:\\_Portfolio Project Github\\_Code Basics Challange on Ride Sharing Insight\\RPC13_Input_For_Participants\\datasets\\csv_files\"),",
+                "    #\"Removed Other Columns\" = Table.SelectColumns(Source,{\"Content\"}),",
+                "    Content1 = #\"Removed Other Columns\"{0}[Content],",
+                "    #\"Imported CSV\" = Csv.Document(Content1,[Delimiter=\",\", Columns=2, Encoding=1252, QuoteStyle=QuoteStyle.None]),",
+                "    #\"Promoted Headers\" = Table.PromoteHeaders(#\"Imported CSV\", [PromoteAllScalars=true]),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"city_id\", type text}, {\"target_avg_passenger_rating\", type number}})",
+                "in",
+                "    #\"Changed Type\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "dim_city",
+        "annotations": [
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          },
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "city_id",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "8cf9c99f-c1bf-4731-87fe-c97a80af8f28",
+            "sourceColumn": "city_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "city_name",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "67460fea-4226-4648-a6f2-9c2149d6b355",
+            "sourceColumn": "city_name",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "fef1630a-cb66-41c9-b86f-f0c3c20f71f3",
+        "partitions": [
+          {
+            "name": "dim_city",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Folder.Files(\"H:\\_Portfolio Project Github\\_Code Basics Challange on Ride Sharing Insight\\RPC13_Input_For_Participants\\datasets\\csv_files\"),",
+                "    #\"Removed Other Columns\" = Table.SelectColumns(Source,{\"Content\"}),",
+                "    Content1 = #\"Removed Other Columns\"{1}[Content],",
+                "    #\"Imported CSV\" = Csv.Document(Content1,[Delimiter=\",\", Columns=2, Encoding=1252, QuoteStyle=QuoteStyle.None]),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Imported CSV\",{{\"Column1\", type text}, {\"Column2\", type text}}),",
+                "    #\"Promoted Headers\" = Table.PromoteHeaders(#\"Changed Type\", [PromoteAllScalars=true]),",
+                "    #\"Changed Type1\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"city_id\", type text}, {\"city_name\", type text}})",
+                "in",
+                "    #\"Changed Type1\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "dim_date",
+        "annotations": [
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          },
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "date",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "UnderlyingDateTimeDataType",
+                "value": "Date"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "Long Date",
+            "lineageTag": "b34215cd-6135-485e-a2ba-55a49ba02dfd",
+            "sourceColumn": "date",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "start_of_month",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "UnderlyingDateTimeDataType",
+                "value": "Date"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "Long Date",
+            "lineageTag": "5d2a1e5a-cb14-4e99-b11a-7b2a45142903",
+            "sourceColumn": "start_of_month",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "month_name",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "d9290f63-f290-4e36-b2c8-9171eab78abd",
+            "sourceColumn": "month_name",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "day_type",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "1326a8f1-6494-4995-aaa5-b10577068120",
+            "sourceColumn": "day_type",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "169a83bb-9abd-4eda-951c-972633fc3ec5",
+        "partitions": [
+          {
+            "name": "dim_date",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Folder.Files(\"H:\\_Portfolio Project Github\\_Code Basics Challange on Ride Sharing Insight\\RPC13_Input_For_Participants\\datasets\\csv_files\"),",
+                "    #\"Removed Other Columns\" = Table.SelectColumns(Source,{\"Content\"}),",
+                "    Content1 = #\"Removed Other Columns\"{2}[Content],",
+                "    #\"Imported CSV\" = Csv.Document(Content1,[Delimiter=\",\", Columns=4, Encoding=1252, QuoteStyle=QuoteStyle.None]),",
+                "    #\"Promoted Headers\" = Table.PromoteHeaders(#\"Imported CSV\", [PromoteAllScalars=true]),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"date\", type date}, {\"start_of_month\", type date}, {\"month_name\", type text}, {\"day_type\", type text}})",
+                "in",
+                "    #\"Changed Type\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "dim_repeat_trip_distribution",
+        "annotations": [
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          },
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "month",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "UnderlyingDateTimeDataType",
+                "value": "Date"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "Long Date",
+            "lineageTag": "3e152da3-2fd4-41c9-a84e-b0d896308716",
+            "sourceColumn": "month",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "city_id",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "05f9c949-afdf-42d7-970a-ee463725ce28",
+            "sourceColumn": "city_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "trip_count",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "1d857422-68b2-47ea-8c14-3da45a16d5c5",
+            "sourceColumn": "trip_count",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "repeat_passenger_count",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "274c2d7f-5c9a-4f4d-8cc7-b468d3973d06",
+            "sourceColumn": "repeat_passenger_count",
+            "summarizeBy": "sum"
+          }
+        ],
+        "lineageTag": "5ff79b54-73d5-4a63-90ab-a8cc9c7ec164",
+        "partitions": [
+          {
+            "name": "dim_repeat_trip_distribution",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Folder.Files(\"H:\\_Portfolio Project Github\\_Code Basics Challange on Ride Sharing Insight\\RPC13_Input_For_Participants\\datasets\\csv_files\"),",
+                "    #\"Removed Other Columns\" = Table.SelectColumns(Source,{\"Content\"}),",
+                "    Content1 = #\"Removed Other Columns\"{3}[Content],",
+                "    #\"Imported CSV\" = Csv.Document(Content1,[Delimiter=\",\", Columns=4, Encoding=1252, QuoteStyle=QuoteStyle.None]),",
+                "    #\"Promoted Headers\" = Table.PromoteHeaders(#\"Imported CSV\", [PromoteAllScalars=true]),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"month\", type date}, {\"city_id\", type text}, {\"trip_count\", type text}, {\"repeat_passenger_count\", Int64.Type}})",
+                "in",
+                "    #\"Changed Type\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Fact_passenger_summary",
+        "annotations": [
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          },
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "month",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "UnderlyingDateTimeDataType",
+                "value": "Date"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "Long Date",
+            "lineageTag": "3c981021-8442-4baa-a1e1-5753633ea7ac",
+            "sourceColumn": "month",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "city_id",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "6d224aa7-c648-4344-a5ac-0b97c1a8b6bc",
+            "sourceColumn": "city_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "new_passengers",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "8202c915-8193-4aac-bca5-b0f43ef9cb8d",
+            "sourceColumn": "new_passengers",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "repeat_passengers",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "375f0947-4f45-4620-b73e-3e602b855bcf",
+            "sourceColumn": "repeat_passengers",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "total_passengers",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "a70eef0a-57c1-4b20-b0f7-997c32b75c2d",
+            "sourceColumn": "total_passengers",
+            "summarizeBy": "sum"
+          }
+        ],
+        "lineageTag": "24cd7d38-e0f8-4baf-81a0-9e6ebffd37cd",
+        "partitions": [
+          {
+            "name": "Fact_passenger_summary",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Folder.Files(\"H:\\_Portfolio Project Github\\_Code Basics Challange on Ride Sharing Insight\\RPC13_Input_For_Participants\\datasets\\csv_files\"),",
+                "    #\"Removed Other Columns\" = Table.SelectColumns(Source,{\"Content\"}),",
+                "    Content1 = #\"Removed Other Columns\"{4}[Content],",
+                "    #\"Imported CSV\" = Csv.Document(Content1,[Delimiter=\",\", Columns=5, Encoding=1252, QuoteStyle=QuoteStyle.None]),",
+                "    #\"Promoted Headers\" = Table.PromoteHeaders(#\"Imported CSV\", [PromoteAllScalars=true]),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"month\", type date}, {\"city_id\", type text}, {\"new_passengers\", Int64.Type}, {\"repeat_passengers\", Int64.Type}, {\"total_passengers\", Int64.Type}})",
+                "in",
+                "    #\"Changed Type\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Fact_trips",
+        "annotations": [
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          },
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "trip_id",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "f2b2fc3a-ea23-45c9-afa2-53590b14f5fd",
+            "sourceColumn": "trip_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "date",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "UnderlyingDateTimeDataType",
+                "value": "Date"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "Long Date",
+            "lineageTag": "2bb23ea7-b86a-413f-8b30-d91e39b53734",
+            "sourceColumn": "date",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "city_id",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "57ac9c85-0a82-446e-82d8-f150ae1ad966",
+            "sourceColumn": "city_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "passenger_type",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "f2b27d94-b10d-432d-8dd1-fd57fd455d33",
+            "sourceColumn": "passenger_type",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "distance_travelled(km)",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "a0b5b8d3-c831-4ec6-91fa-d3ccde119978",
+            "sourceColumn": "distance_travelled(km)",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "fare_amount",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "86a4781a-cf9b-4a9a-87a9-308beaeaa613",
+            "sourceColumn": "fare_amount",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "passenger_rating",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "aafe7fa2-c4de-4f18-bb75-7360d6790880",
+            "sourceColumn": "passenger_rating",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "driver_rating",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "7ae3a722-6ccc-4511-8afe-3519ba6ad319",
+            "sourceColumn": "driver_rating",
+            "summarizeBy": "sum"
+          }
+        ],
+        "lineageTag": "017663c6-d551-4bf9-8a56-0087d1c2c599",
+        "partitions": [
+          {
+            "name": "Fact_trips",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Folder.Files(\"H:\\_Portfolio Project Github\\_Code Basics Challange on Ride Sharing Insight\\RPC13_Input_For_Participants\\datasets\\csv_files\"),",
+                "    #\"Removed Other Columns\" = Table.SelectColumns(Source,{\"Content\"}),",
+                "    Content1 = #\"Removed Other Columns\"{5}[Content],",
+                "    #\"Imported CSV\" = Csv.Document(Content1,[Delimiter=\",\", Columns=8, Encoding=1252, QuoteStyle=QuoteStyle.None]),",
+                "    #\"Promoted Headers\" = Table.PromoteHeaders(#\"Imported CSV\", [PromoteAllScalars=true]),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"trip_id\", type text}, {\"date\", type date}, {\"city_id\", type text}, {\"passenger_type\", type text}, {\"distance_travelled(km)\", Int64.Type}, {\"fare_amount\", Int64.Type}, {\"passenger_rating\", Int64.Type}, {\"driver_rating\", Int64.Type}})",
+                "in",
+                "    #\"Changed Type\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Monthly_target_new_passengers",
+        "annotations": [
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          },
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "month",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "UnderlyingDateTimeDataType",
+                "value": "Date"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "Long Date",
+            "lineageTag": "97d5c885-34f3-4258-b5e1-0377c6fcad7a",
+            "sourceColumn": "month",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "city_id",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "732d9df8-0adf-4ec0-a7c8-8a150be6dd69",
+            "sourceColumn": "city_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "target_new_passengers",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "cbe57ad5-8259-47ee-b38f-4fb471fd5286",
+            "sourceColumn": "target_new_passengers",
+            "summarizeBy": "sum"
+          }
+        ],
+        "lineageTag": "d440f6d0-fc1e-4d92-afb3-d6a259cd727a",
+        "partitions": [
+          {
+            "name": "Monthly_target_new_passengers",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Folder.Files(\"H:\\_Portfolio Project Github\\_Code Basics Challange on Ride Sharing Insight\\RPC13_Input_For_Participants\\datasets\\csv_files\"),",
+                "    #\"Removed Other Columns\" = Table.SelectColumns(Source,{\"Content\"}),",
+                "    Content1 = #\"Removed Other Columns\"{6}[Content],",
+                "    #\"Imported CSV\" = Csv.Document(Content1,[Delimiter=\",\", Columns=3, Encoding=1252, QuoteStyle=QuoteStyle.None]),",
+                "    #\"Promoted Headers\" = Table.PromoteHeaders(#\"Imported CSV\", [PromoteAllScalars=true]),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"month\", type date}, {\"city_id\", type text}, {\"target_new_passengers\", Int64.Type}})",
+                "in",
+                "    #\"Changed Type\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Monthly_target_trips",
+        "annotations": [
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          },
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "month",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "UnderlyingDateTimeDataType",
+                "value": "Date"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "Long Date",
+            "lineageTag": "d2045528-e008-42c6-a906-91564594e46d",
+            "sourceColumn": "month",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "city_id",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "2c95aace-e9f9-4088-806f-e5e732f635ae",
+            "sourceColumn": "city_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "total_target_trips",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "b47578bf-a1f7-4ff7-b3d2-c64f6e37c02b",
+            "sourceColumn": "total_target_trips",
+            "summarizeBy": "sum"
+          }
+        ],
+        "lineageTag": "ceedb4f6-9a09-41cf-a517-67df5e5cccb5",
+        "partitions": [
+          {
+            "name": "Monthly_target_trips",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Folder.Files(\"H:\\_Portfolio Project Github\\_Code Basics Challange on Ride Sharing Insight\\RPC13_Input_For_Participants\\datasets\\csv_files\"),",
+                "    #\"Removed Other Columns\" = Table.SelectColumns(Source,{\"Content\"}),",
+                "    Content1 = #\"Removed Other Columns\"{7}[Content],",
+                "    #\"Imported CSV\" = Csv.Document(Content1,[Delimiter=\",\", Columns=3, Encoding=1252, QuoteStyle=QuoteStyle.None]),",
+                "    #\"Promoted Headers\" = Table.PromoteHeaders(#\"Imported CSV\", [PromoteAllScalars=true]),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"month\", type date}, {\"city_id\", type text}, {\"total_target_trips\", Int64.Type}})",
+                "in",
+                "    #\"Changed Type\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
       }
     ]
   }
