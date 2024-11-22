@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Codebasics Resume Chalange Project_13"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "baea1d60-e1a9-47a3-b904-9ce48634ed37"
+  }
+}
