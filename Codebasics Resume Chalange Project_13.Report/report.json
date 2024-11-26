@@ -1,5 +1,5 @@
 {
-  "config": "{\"version\":\"5.59\",\"themeCollection\":{\"baseTheme\":{\"name\":\"CY24SU10\",\"version\":\"5.60\",\"type\":2}},\"activeSectionIndex\":0,\"defaultDrillFilterOtherVisuals\":true,\"settings\":{\"useNewFilterPaneExperience\":true,\"allowChangeFilterTypes\":true,\"useStylableVisualContainerHeader\":true,\"queryLimitOption\":6,\"exportDataMode\":1,\"useDefaultAggregateDisplayName\":true},\"objects\":{\"section\":[{\"properties\":{\"verticalAlignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Top'\"}}}}}]}}",
+  "config": "{\"version\":\"5.59\",\"themeCollection\":{\"baseTheme\":{\"name\":\"CY24SU10\",\"version\":\"5.60\",\"type\":2}},\"activeSectionIndex\":2,\"defaultDrillFilterOtherVisuals\":true,\"linguisticSchemaSyncVersion\":2,\"settings\":{\"useNewFilterPaneExperience\":true,\"allowChangeFilterTypes\":true,\"useStylableVisualContainerHeader\":true,\"queryLimitOption\":6,\"exportDataMode\":1,\"useDefaultAggregateDisplayName\":true,\"useEnhancedTooltips\":true},\"objects\":{\"section\":[{\"properties\":{\"verticalAlignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Top'\"}}}}}],\"outspacePane\":[{\"properties\":{\"expanded\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}",
   "layoutOptimization": 0,
   "resourcePackages": [
     {
@@ -25,7 +25,95 @@
       "filters": "[]",
       "height": 720.00,
       "name": "32c4fd45c9bdb2fd0109",
-      "visualContainers": [],
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"9b9d8df01fdd4954faa5\",\"layouts\":[{\"id\":0,\"position\":{\"x\":10.267379679144385,\"y\":462.03208556149735,\"z\":1000,\"width\":1238.9304812834225,\"height\":258.3957219251337,\"tabOrder\":1000}}],\"singleVisual\":{\"visualType\":\"pivotTable\",\"projections\":{\"Rows\":[{\"queryRef\":\"dim_city.city_name\",\"active\":true}],\"Values\":[{\"queryRef\":\"_measures.Average Trip Distance\"},{\"queryRef\":\"_measures.Max Trip distance\"},{\"queryRef\":\"_measures.Min Trip distance\"},{\"queryRef\":\"_measures.Total Trips\"},{\"queryRef\":\"_measures.Average Fare per KM\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"dim_city\",\"Type\":0},{\"Name\":\"_\",\"Entity\":\"_measures\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"city_name\"},\"Name\":\"dim_city.city_name\",\"NativeReferenceName\":\"city_name\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"Average Trip Distance\"},\"Name\":\"_measures.Average Trip Distance\",\"NativeReferenceName\":\"Average Trip Distance\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"Max Trip distance\"},\"Name\":\"_measures.Max Trip distance\",\"NativeReferenceName\":\"Max Trip distance\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"Min Trip distance\"},\"Name\":\"_measures.Min Trip distance\",\"NativeReferenceName\":\"Min Trip distance\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"Total Trips\"},\"Name\":\"_measures.Total Trips\",\"NativeReferenceName\":\"Total Trips\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"Average Fare per KM\"},\"Name\":\"_measures.Average Fare per KM\",\"NativeReferenceName\":\"Average Fare per KM\"}]},\"drillFilterOtherVisuals\":true}}",
+          "filters": "[]",
+          "height": 258.40,
+          "width": 1238.93,
+          "x": 10.27,
+          "y": 462.03,
+          "z": 1000.00
+        },
+        {
+          "config": "{\"name\":\"cf1abc0e8c957fcd28c8\",\"layouts\":[{\"id\":0,\"position\":{\"x\":10.267379679144385,\"y\":0,\"z\":0,\"width\":1238.9304812834225,\"height\":429.51871657754015,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"multiRowCard\",\"projections\":{\"Values\":[{\"queryRef\":\"_measures.Total Distance Travelled\"},{\"queryRef\":\"_measures.Total fare amount\"},{\"queryRef\":\"_measures.Total Trips\"},{\"queryRef\":\"_measures.Average Fare per KM\"},{\"queryRef\":\"_measures.Average Trip Distance\"},{\"queryRef\":\"_measures.Max Trip distance\"},{\"queryRef\":\"_measures.Min Trip distance\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"_\",\"Entity\":\"_measures\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"Total Distance Travelled\"},\"Name\":\"_measures.Total Distance Travelled\",\"NativeReferenceName\":\"Total Distance Travelled\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"Total fare amount\"},\"Name\":\"_measures.Total fare amount\",\"NativeReferenceName\":\"Total fare amount\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"Total Trips\"},\"Name\":\"_measures.Total Trips\",\"NativeReferenceName\":\"Total Trips\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"Average Fare per KM\"},\"Name\":\"_measures.Average Fare per KM\",\"NativeReferenceName\":\"Average Fare per KM\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"Average Trip Distance\"},\"Name\":\"_measures.Average Trip Distance\",\"NativeReferenceName\":\"Average Trip Distance\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"Max Trip distance\"},\"Name\":\"_measures.Max Trip distance\",\"NativeReferenceName\":\"Max Trip distance\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"Min Trip distance\"},\"Name\":\"_measures.Min Trip distance\",\"NativeReferenceName\":\"Min Trip distance\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"Total Distance Travelled\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true}}",
+          "filters": "[]",
+          "height": 429.52,
+          "width": 1238.93,
+          "x": 10.27,
+          "y": 0.00,
+          "z": 0.00
+        }
+      ],
+      "width": 1280.00
+    },
+    {
+      "config": "{}",
+      "displayName": "Page 2",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 720.00,
+      "name": "db33730b0f28c6c2f95e",
+      "ordinal": 1,
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"2d0d12c1bb0243a9fd59\",\"layouts\":[{\"id\":0,\"position\":{\"x\":912.7116212338593,\"y\":78.04878048780488,\"z\":3,\"width\":367.28837876614057,\"height\":289.23959827833573,\"tabOrder\":3}}],\"singleVisual\":{\"visualType\":\"pivotTable\",\"projections\":{\"Rows\":[{\"queryRef\":\"dim_city.city_name\",\"active\":true}],\"Values\":[{\"queryRef\":\"_measures.Total Trips\"}],\"Columns\":[{\"queryRef\":\"dim_date.day_type\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"dim_city\",\"Type\":0},{\"Name\":\"_\",\"Entity\":\"_measures\",\"Type\":0},{\"Name\":\"d1\",\"Entity\":\"dim_date\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"city_name\"},\"Name\":\"dim_city.city_name\",\"NativeReferenceName\":\"city_name\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"Total Trips\"},\"Name\":\"_measures.Total Trips\",\"NativeReferenceName\":\"Total Trips\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d1\"}},\"Property\":\"day_type\"},\"Name\":\"dim_date.day_type\",\"NativeReferenceName\":\"day_type\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"Total Trips\"}}}]},\"drillFilterOtherVisuals\":true}}",
+          "filters": "[]",
+          "height": 289.24,
+          "width": 367.29,
+          "x": 912.71,
+          "y": 78.05,
+          "z": 3.00
+        },
+        {
+          "config": "{\"name\":\"8e660a27aae6a7517953\",\"layouts\":[{\"id\":0,\"position\":{\"x\":548.1779053084648,\"y\":78.04878048780488,\"z\":2,\"width\":278.2209469153515,\"height\":289.23959827833573,\"tabOrder\":2}}],\"singleVisual\":{\"visualType\":\"pivotTable\",\"projections\":{\"Rows\":[{\"queryRef\":\"dim_city.city_name\",\"active\":true}],\"Values\":[{\"queryRef\":\"_measures.Avg rating Passenger\"}],\"Columns\":[{\"queryRef\":\"Fact_trips.passenger_type\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"_\",\"Entity\":\"_measures\",\"Type\":0},{\"Name\":\"d\",\"Entity\":\"dim_city\",\"Type\":0},{\"Name\":\"f\",\"Entity\":\"Fact_trips\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"city_name\"},\"Name\":\"dim_city.city_name\",\"NativeReferenceName\":\"city_name\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"Avg rating Passenger\"},\"Name\":\"_measures.Avg rating Passenger\",\"NativeReferenceName\":\"Avg rating Passenger\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"passenger_type\"},\"Name\":\"Fact_trips.passenger_type\",\"NativeReferenceName\":\"passenger_type\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"Avg rating Passenger\"}}}]},\"drillFilterOtherVisuals\":true}}",
+          "filters": "[]",
+          "height": 289.24,
+          "width": 278.22,
+          "x": 548.18,
+          "y": 78.05,
+          "z": 2.00
+        },
+        {
+          "config": "{\"name\":\"e43d034c8a71002a680c\",\"layouts\":[{\"id\":0,\"position\":{\"x\":78.96700143472023,\"y\":439.82783357245336,\"z\":0,\"width\":1137.6757532281204,\"height\":280.9756097560975,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"pivotTable\",\"projections\":{\"Rows\":[{\"queryRef\":\"dim_city.city_name\",\"active\":true}],\"Values\":[{\"queryRef\":\"_measures.Total Trips\"},{\"queryRef\":\"_measures.Average Fare per KM\"},{\"queryRef\":\"_measures.Avg rating Passenger\"},{\"queryRef\":\"_measures.AVG driver Rating\"},{\"queryRef\":\"_measures.Average Fare Per trip\"},{\"queryRef\":\"_measures.% contribiution on total trip\"},{\"queryRef\":\"_measures.% of fare amount\"},{\"queryRef\":\"_measures.Total fare amount\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"_\",\"Entity\":\"_measures\",\"Type\":0},{\"Name\":\"d\",\"Entity\":\"dim_city\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"city_name\"},\"Name\":\"dim_city.city_name\",\"NativeReferenceName\":\"city_name\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"Total Trips\"},\"Name\":\"_measures.Total Trips\",\"NativeReferenceName\":\"Total Trips\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"Average Fare per KM\"},\"Name\":\"_measures.Average Fare per KM\",\"NativeReferenceName\":\"Average Fare per KM\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"Average Fare Per trip\"},\"Name\":\"_measures.Average Fare Per trip\",\"NativeReferenceName\":\"Average Fare Per trip\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"% contribiution on total trip\"},\"Name\":\"_measures.% contribiution on total trip\",\"NativeReferenceName\":\"% contribiution on total trip\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"% of fare amount\"},\"Name\":\"_measures.% of fare amount\",\"NativeReferenceName\":\"% of fare amount\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"Total fare amount\"},\"Name\":\"_measures.Total fare amount\",\"NativeReferenceName\":\"Total fare amount\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"Avg rating Passenger\"},\"Name\":\"_measures.Avg rating Passenger\",\"NativeReferenceName\":\"Avg rating Passenger\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"AVG driver Rating\"},\"Name\":\"_measures.AVG driver Rating\",\"NativeReferenceName\":\"AVG driver Rating\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"Total Trips\"}}}]},\"drillFilterOtherVisuals\":true}}",
+          "filters": "[]",
+          "height": 280.98,
+          "width": 1137.68,
+          "x": 78.97,
+          "y": 439.83,
+          "z": 0.00
+        },
+        {
+          "config": "{\"name\":\"fdd13d019c9f1f8465d3\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":18.36441893830703,\"z\":1,\"width\":501.3486370157819,\"height\":391.1621233859397,\"tabOrder\":1}}],\"singleVisual\":{\"visualType\":\"ribbonChart\",\"projections\":{\"Series\":[{\"queryRef\":\"dim_city.city_name\"}],\"Y\":[{\"queryRef\":\"_measures.Total Trips\"}],\"Category\":[{\"queryRef\":\"dim_date.start_of_month\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"dim_city\",\"Type\":0},{\"Name\":\"_\",\"Entity\":\"_measures\",\"Type\":0},{\"Name\":\"d1\",\"Entity\":\"dim_date\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"city_name\"},\"Name\":\"dim_city.city_name\",\"NativeReferenceName\":\"city_name\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"Total Trips\"},\"Name\":\"_measures.Total Trips\",\"NativeReferenceName\":\"Total Trips\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d1\"}},\"Property\":\"start_of_month\"},\"Name\":\"dim_date.start_of_month\",\"NativeReferenceName\":\"start_of_month\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d1\"}},\"Property\":\"start_of_month\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true}}",
+          "filters": "[]",
+          "height": 391.16,
+          "width": 501.35,
+          "x": 0.00,
+          "y": 18.36,
+          "z": 1.00
+        }
+      ],
+      "width": 1280.00
+    },
+    {
+      "config": "{}",
+      "displayName": "Page 3",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 720.00,
+      "name": "fba8848c499751d0235c",
+      "ordinal": 2,
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"9ccec9af9e157e25405f\",\"layouts\":[{\"id\":0,\"position\":{\"x\":111.10473457675752,\"y\":180.88952654232423,\"z\":0,\"width\":1117.4748923959828,\"height\":499.5121951219512,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"clusteredColumnChart\",\"projections\":{\"Category\":[{\"queryRef\":\"dim_city.city_name\",\"active\":true}],\"Y\":[{\"queryRef\":\"_measures.Total Trips\"},{\"queryRef\":\"Sum(Monthly_target_trips.total_target_trips)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"_\",\"Entity\":\"_measures\",\"Type\":0},{\"Name\":\"d1\",\"Entity\":\"dim_city\",\"Type\":0},{\"Name\":\"m\",\"Entity\":\"Monthly_target_trips\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d1\"}},\"Property\":\"city_name\"},\"Name\":\"dim_city.city_name\",\"NativeReferenceName\":\"city_name\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"Total Trips\"},\"Name\":\"_measures.Total Trips\",\"NativeReferenceName\":\"Total Trips\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"total_target_trips\"}},\"Function\":0},\"Name\":\"Sum(Monthly_target_trips.total_target_trips)\",\"NativeReferenceName\":\"Sum of total_target_trips\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"Total Trips\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true}}",
+          "filters": "[]",
+          "height": 499.51,
+          "width": 1117.47,
+          "x": 111.10,
+          "y": 180.89,
+          "z": 0.00
+        }
+      ],
       "width": 1280.00
     }
   ]

@@ -1,5 +1,5 @@
 {
-  "compatibilityLevel": 1550,
+  "compatibilityLevel": 1567,
   "model": {
     "annotations": [
       {
@@ -16,7 +16,7 @@
       },
       {
         "name": "PBI_QueryOrder",
-        "value": "[\"City_Target_passenger_rating\",\"dim_city\",\"dim_date\",\"dim_repeat_trip_distribution\",\"Fact_passenger_summary\",\"Fact_trips\",\"Monthly_target_new_passengers\",\"Monthly_target_trips\"]"
+        "value": "[\"City_Target_passenger_rating\",\"dim_city\",\"dim_date\",\"dim_repeat_trip_distribution\",\"Fact_passenger_summary\",\"Fact_trips\",\"Monthly_target_new_passengers\",\"Monthly_target_trips\",\"_measures\"]"
       }
     ],
     "culture": "en-US",
@@ -81,6 +81,21 @@
         "fromTable": "Monthly_target_trips",
         "toColumn": "city_id",
         "toTable": "City_Target_passenger_rating"
+      },
+      {
+        "name": "314d1353-7241-f468-9965-5e3afbdf3637",
+        "fromColumn": "date",
+        "fromTable": "Fact_trips",
+        "toColumn": "date",
+        "toTable": "dim_date"
+      },
+      {
+        "name": "861ece85-3186-f8ac-edfc-60772736602f",
+        "fromColumn": "city_id",
+        "fromTable": "Fact_trips",
+        "isActive": false,
+        "toColumn": "city_id",
+        "toTable": "dim_city"
       }
     ],
     "sourceQueryCulture": "en-US",
@@ -241,6 +256,7 @@
             ],
             "dataType": "dateTime",
             "formatString": "Long Date",
+            "isKey": true,
             "lineageTag": "b34215cd-6135-485e-a2ba-55a49ba02dfd",
             "sourceColumn": "date",
             "summarizeBy": "none"
@@ -271,8 +287,14 @@
                 "value": "Automatic"
               }
             ],
+            "changedProperties": [
+              {
+                "property": "SortByColumn"
+              }
+            ],
             "dataType": "string",
             "lineageTag": "d9290f63-f290-4e36-b2c8-9171eab78abd",
+            "sortByColumn": "start_of_month",
             "sourceColumn": "month_name",
             "summarizeBy": "none"
           },
@@ -290,6 +312,7 @@
             "summarizeBy": "none"
           }
         ],
+        "dataCategory": "Time",
         "lineageTag": "169a83bb-9abd-4eda-951c-972633fc3ec5",
         "partitions": [
           {
@@ -820,6 +843,150 @@
                 "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"month\", type date}, {\"city_id\", type text}, {\"total_target_trips\", Int64.Type}})",
                 "in",
                 "    #\"Changed Type\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "_measures",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "lineageTag": "e9cb3cff-7c85-47b3-ad70-6548f5664454",
+        "measures": [
+          {
+            "name": "Total fare amount",
+            "expression": "SUM(Fact_trips[fare_amount])",
+            "formatString": "#,0",
+            "lineageTag": "5967dbe2-1926-4cc2-aa0f-930d8fe554e8"
+          },
+          {
+            "name": "Total Distance Travelled",
+            "expression": "SUM(Fact_trips[distance_travelled(km)])",
+            "formatString": "0",
+            "lineageTag": "205ad258-12cc-4d97-882d-1ed284ff9807"
+          },
+          {
+            "name": "Total Trips",
+            "expression": "COUNTA(Fact_trips[city_id])",
+            "formatString": "#,0",
+            "lineageTag": "1c6b2800-60f6-40e1-bb9d-c2f899f8095f"
+          },
+          {
+            "name": "Average Fare per KM",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "expression": "DIVIDE([Total fare amount], [Total Distance Travelled])",
+            "lineageTag": "a0b32543-cb2b-435b-a089-63d5a698a7c8"
+          },
+          {
+            "name": "Average Trip Distance",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "expression": "DIVIDE([Total Distance Travelled], [Total Trips])",
+            "lineageTag": "90523359-9885-450f-8af8-143410b85b33"
+          },
+          {
+            "name": "Max Trip distance",
+            "expression": "MAX(Fact_trips[distance_travelled(km)])",
+            "formatString": "0",
+            "lineageTag": "de325850-f263-4593-991b-cb06fb99f892"
+          },
+          {
+            "name": "Min Trip distance",
+            "expression": "MIN(Fact_trips[distance_travelled(km)])",
+            "formatString": "0",
+            "lineageTag": "ba036a83-b684-4437-ba7c-b21cd3cc93ec"
+          },
+          {
+            "name": "Average Fare Per trip",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "expression": "DIVIDE([Total fare amount], [Total Trips])",
+            "lineageTag": "03e7adb8-b331-4dd5-b8e2-f3dee17d32ce"
+          },
+          {
+            "name": "% contribiution on total trip",
+            "expression": [
+              "",
+              "VAR all_Total_trip =CALCULATE([Total Trips], ALL(dim_city))",
+              "RETURN",
+              "DIVIDE([Total Trips], all_Total_trip)"
+            ],
+            "formatString": "0.00%;-0.00%;0.00%",
+            "lineageTag": "01da36a6-ee85-453d-b39c-3cbc313a5a8c"
+          },
+          {
+            "name": "% of fare amount",
+            "expression": [
+              "",
+              "VAR all_fare_amount = CALCULATE([Total fare amount], ALL(dim_city))",
+              "RETURN",
+              "DIVIDE([Total fare amount], all_fare_amount)"
+            ],
+            "formatString": "0.00%;-0.00%;0.00%",
+            "lineageTag": "a9228d81-ce77-4ac7-880e-305ce9457c6e"
+          },
+          {
+            "name": "Avg rating Passenger",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "expression": [
+              "",
+              "DIVIDE(SUM(Fact_trips[passenger_rating]), [Total Trips])"
+            ],
+            "lineageTag": "7bebff93-776b-40cc-b149-c88ce59dedfb"
+          },
+          {
+            "name": "AVG driver Rating",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "expression": [
+              "",
+              "VAR total_driver_rating = SUM(Fact_trips[driver_rating])",
+              "RETURN",
+              "DIVIDE(total_driver_rating, [Total Trips])"
+            ],
+            "lineageTag": "f9f89082-e0d0-4eab-a984-d91c42775942"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "_measures",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText(\"i44FAA==\", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(Source,{{\"Column1\", type text}}),",
+                "    #\"Removed Columns\" = Table.RemoveColumns(#\"Changed Type\",{\"Column1\"})",
+                "in",
+                "    #\"Removed Columns\""
               ],
               "type": "m"
             }

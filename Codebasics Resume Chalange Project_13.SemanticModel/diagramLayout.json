@@ -4,14 +4,14 @@
     {
       "ordinal": 0,
       "scrollPosition": {
-        "x": 0,
+        "x": 72.390390368366752,
         "y": 0
       },
       "nodes": [
         {
           "location": {
-            "x": 294.25606763763437,
-            "y": 288.24382617763575
+            "x": 127.25606763763437,
+            "y": 192.24382617763575
           },
           "nodeIndex": "City_Target_passenger_rating",
           "nodeLineageTag": "91a8c468-778f-4f5e-810e-846b4ef123e3",
@@ -19,12 +19,12 @@
             "height": 128,
             "width": 234
           },
-          "zIndex": 0
+          "zIndex": 1
         },
         {
           "location": {
-            "x": 10,
-            "y": 300.14470090836568
+            "x": 824,
+            "y": 264.14470090836568
           },
           "nodeIndex": "dim_city",
           "nodeLineageTag": "fef1630a-cb66-41c9-b86f-f0c3c20f71f3",
@@ -32,12 +32,12 @@
             "height": 128,
             "width": 234
           },
-          "zIndex": 0
+          "zIndex": 2
         },
         {
           "location": {
-            "x": 881.39039036836675,
-            "y": 286.22375038504958
+            "x": 792,
+            "y": 493.22375038504958
           },
           "nodeIndex": "dim_date",
           "nodeLineageTag": "169a83bb-9abd-4eda-951c-972633fc3ec5",
@@ -45,12 +45,12 @@
             "height": 176,
             "width": 234
           },
-          "zIndex": 0
+          "zIndex": 3
         },
         {
           "location": {
-            "x": 448.38750087986438,
-            "y": -10
+            "x": 439.38750087986432,
+            "y": 0
           },
           "nodeIndex": "dim_repeat_trip_distribution",
           "nodeLineageTag": "5ff79b54-73d5-4a63-90ab-a8cc9c7ec164",
@@ -58,12 +58,12 @@
             "height": 176,
             "width": 234
           },
-          "zIndex": 0
+          "zIndex": 4
         },
         {
           "location": {
-            "x": 607.390390368367,
-            "y": 216.21044247047229
+            "x": 803.390390368367,
+            "y": 22.210442470472287
           },
           "nodeIndex": "Fact_passenger_summary",
           "nodeLineageTag": "24cd7d38-e0f8-4baf-81a0-9e6ebffd37cd",
@@ -71,12 +71,12 @@
             "height": 200,
             "width": 234
           },
-          "zIndex": 0
+          "zIndex": 5
         },
         {
           "location": {
-            "x": 475.4568970083356,
-            "y": 466.44750077009917
+            "x": 436.45689700833555,
+            "y": 298.44750077009917
           },
           "nodeIndex": "Fact_trips",
           "nodeLineageTag": "017663c6-d551-4bf9-8a56-0087d1c2c599",
@@ -84,12 +84,12 @@
             "height": 272,
             "width": 234
           },
-          "zIndex": 0
+          "zIndex": 6
         },
         {
           "location": {
-            "x": 164.12724210950705,
-            "y": 35.330994512954931
+            "x": 0,
+            "y": 0
           },
           "nodeIndex": "Monthly_target_new_passengers",
           "nodeLineageTag": "d440f6d0-fc1e-4d92-afb3-d6a259cd727a",
@@ -97,12 +97,12 @@
             "height": 152,
             "width": 234
           },
-          "zIndex": 0
+          "zIndex": 9
         },
         {
           "location": {
-            "x": 191.2062776800305,
-            "y": 547.79784240579329
+            "x": 68.2062776800305,
+            "y": 497.79784240579329
           },
           "nodeIndex": "Monthly_target_trips",
           "nodeLineageTag": "ceedb4f6-9a09-41cf-a517-67df5e5cccb5",
@@ -110,7 +110,20 @@
             "height": 152,
             "width": 234
           },
-          "zIndex": 0
+          "zIndex": 7
+        },
+        {
+          "location": {
+            "x": 1155.3903903683668,
+            "y": 322.22375038504958
+          },
+          "nodeIndex": "_measures",
+          "nodeLineageTag": "e9cb3cff-7c85-47b3-ad70-6548f5664454",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 8
         }
       ],
       "name": "All tables",
